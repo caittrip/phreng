@@ -26,10 +26,22 @@ expect_equal(spec@filtration, "cubical")
 expect_true(is.na(spec@max_scale))
 expect_equal(spec@sublevel, TRUE)
 
+# sublevel value tests
+spec <- PH_raster(sublevel = TRUE)
+expect_equal(spec@sublevel, TRUE)
+
+spec <- PH_raster(sublevel = FALSE)
+expect_equal(spec@sublevel, FALSE)
+
 # max_scale test
 spec <- PH_raster(max_scale = 10)
 
 expect_equal(spec@max_scale, 10)
+
+# max_scale boundary test
+spec <- PH_raster(max_scale = 0)
+
+expect_equal(spec@max_scale, 0)
 
 # validator tests
 expect_error(
