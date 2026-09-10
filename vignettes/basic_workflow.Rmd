@@ -35,10 +35,44 @@ If you already know which filtration you would like to compute, you can use `phr
 ```{r}
 available_engines("cubical")
 
-available_engines("alpha")
+available_engines("vietoris_rips")
 ```
 
 If an unsupported filtration is requested, the function returns an error directing the user toward `available_filtrations()`.
+
+You can also check which input types are supported for a filtration.
+
+```{r}
+available_inputs("cubical")
+
+available_inputs("vietoris_rips")
+```
+
+You can also check which classes are supported for a particular filtration and/or input.
+
+```{r}
+available_classes(
+  filtration = "vietoris_rips",
+  input = "point_cloud"
+)
+
+available_classes(
+  filtration = "alpha"
+)
+
+available_classes(
+  input = "raster"
+)
+```
+
+Finally, you can use `recommend_engine()` to choose an appropriate engine.
+
+```{r}
+recommend_engine(
+  filtration = "vietoris_rips",
+  input = "point_cloud"
+)
+```
 
 ## Example Workflow
 
